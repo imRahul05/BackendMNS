@@ -3,9 +3,6 @@ import { protect, authorizeRoles } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-// @route   GET /api/gallery
-// @desc    Get all gallery images
-// @access  Public
 router.get('/', async (req, res) => {
   try {
     // This is a placeholder for the actual controller function
@@ -64,9 +61,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// @route   GET /api/gallery/:id
-// @desc    Get gallery image by ID
-// @access  Public
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -97,9 +91,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// @route   POST /api/gallery
-// @desc    Upload new image to gallery
-// @access  Private/Admin
 router.post('/', protect, authorizeRoles('admin', 'teacher'), async (req, res) => {
   try {
     res.status(201).json({
@@ -121,9 +112,6 @@ router.post('/', protect, authorizeRoles('admin', 'teacher'), async (req, res) =
   }
 });
 
-// @route   PUT /api/gallery/:id
-// @desc    Update gallery image
-// @access  Private/Admin
 router.put('/:id', protect, authorizeRoles('admin', 'teacher'), async (req, res) => {
   try {
     const { id } = req.params;
@@ -146,9 +134,7 @@ router.put('/:id', protect, authorizeRoles('admin', 'teacher'), async (req, res)
   }
 });
 
-// @route   DELETE /api/gallery/:id
-// @desc    Delete gallery image
-// @access  Private/Admin
+
 router.delete('/:id', protect, authorizeRoles('admin', 'teacher'), async (req, res) => {
   try {
     const { id } = req.params;
@@ -166,9 +152,6 @@ router.delete('/:id', protect, authorizeRoles('admin', 'teacher'), async (req, r
   }
 });
 
-// @route   GET /api/gallery/category/:category
-// @desc    Get gallery images by category
-// @access  Public
 router.get('/category/:category', async (req, res) => {
   try {
     const { category } = req.params;

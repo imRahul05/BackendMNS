@@ -30,8 +30,13 @@ const __dirname = dirname(__filename);
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('CLIENT_URL:', process.env.CLIENT_URL);
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? process.env.CLIENT_URL : 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    'https://mansarovar-public-school-green.vercel.app/',
+  ],
   credentials: true
 }));
 

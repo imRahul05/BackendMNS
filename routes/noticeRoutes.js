@@ -142,24 +142,6 @@ router.put('/:id', protect, authorizeRoles('admin', 'teacher'), async (req, res)
 // @route   DELETE /api/notices/:id
 // @desc    Delete notice
 // @access  Private/Admin
-router.delete('/:id', protect, authorizeRoles('admin', 'teacher'), async (req, res) => {
-  try {
-    const { id } = req.params;
-    
-    // This is a placeholder for the actual controller function
-    // Will be implemented properly with a controller file
-    res.status(200).json({
-      success: true,
-      message: `Notice with id ${id} deleted successfully`
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Server error',
-      error: error.message
-    });
-  }
-});
 
 // @route   GET /api/notices/category/:category
 // @desc    Get notices by category
@@ -183,6 +165,25 @@ router.get('/category/:category', async (req, res) => {
           attachmentUrl: null
         }
       ]
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Server error',
+      error: error.message
+    });
+  }
+});
+
+router.delete('/:id', protect, authorizeRoles('admin', 'teacher'), async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    // This is a placeholder for the actual controller function
+    // Will be implemented properly with a controller file
+    res.status(200).json({
+      success: true,
+      message: `Notice with id ${id} deleted successfully`
     });
   } catch (error) {
     res.status(500).json({
