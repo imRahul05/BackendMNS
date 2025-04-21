@@ -35,7 +35,7 @@ console.log('CLIENT_URL:', process.env.CLIENT_URL);
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://mansarovar-public-school-green.vercel.app/',
+    'https://mansarovar-public-school-green.vercel.app',
   ],
   credentials: true
 }));
